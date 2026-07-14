@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Your HTML here -->
+        <header>
+            <img src="assets/parrot.png" class="header-parrot-img"/>
+            <div class="title-wrapper">
+                <h1 class="header-title">PollyGlot</h1>
+                <h2 class="header-subtitle">Perfect Translation Every Time</h2>
+            </div>
+        </header>
+        
+        <main>
+            <div class="translation-container">
+                <!-- TODO -->
+                <form id="translation-form">
+                    <h2>Text to translate 👇</h2>
+                    <textarea id="user-input" placeholder="e.g., Early Christian Church"></textarea>
+                    <h2>Select language 👇</h2>
+                    <div class="radio-container">
+                        <div class="radio-row">
+                            <input type="radio" id="greek" value="greek" name="language" checked/>
+                            <label for="greek">Greek</label>
+                            <img class="language-img" src="assets/gr-flag.png" />
+                        </div>
+                        <div class="radio-row">
+                            <input type="radio" id="spanish" value="spanish" name="language"/>
+                            <label for="spanish">Spanish</label>
+                            <img class="language-img" src="assets/arg-flag.png" />
+                        </div>
+                    </div>                  
+                    <button class="translate-btn" id="translate-btn">Translate</button>
+                </form>
+            </div>
+        </main>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

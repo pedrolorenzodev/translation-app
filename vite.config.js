@@ -1,7 +1,9 @@
-import {defineConfig} from "vite"
+console.log('VITE CONFIG LOADED')
 
-export default defineConfig({
-	plugins: [
-		
-	]
-})
+export default {
+	server: {
+	  proxy: {
+		'/api': 'http://localhost:3001'
+	  }
+	}
+  }

@@ -56,7 +56,6 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  flex: 1;
   padding: 30px 15px;
 }
 
@@ -96,15 +95,19 @@ form textarea {
   font-size: 18px;
   font-weight: 600;
   font-family: inherit;
-  line-height: 22px;
+  line-height: 28px;
   color: rgba(51, 51, 51, 1);
+}
+
+.language-selection-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .radio-container {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
-  margin-bottom: 25px;
   gap: 8px;
 }
 
@@ -112,6 +115,7 @@ form textarea {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin: 0 20px;
 }
 
 .radio-row input {
@@ -135,7 +139,11 @@ form textarea {
 }
 
 .translate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  min-height: 52px;
   padding: 15px;
   border: none;
   border-radius: 8px;
@@ -146,4 +154,33 @@ form textarea {
   font-size: 22px;
   font-weight: 700;
   font-family: inherit;
+  line-height: 22px;
+}
+
+.button-spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.translate-btn.is-loading .button-text {
+  display: none;
+}
+
+.translate-btn.is-loading .button-spinner {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

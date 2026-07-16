@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,21 +26,28 @@
                 <!-- TODO -->
                 <form id="translation-form">
                     <h2>Text to translate 👇</h2>
-                    <textarea id="user-input" placeholder="e.g., Early Christian Church"></textarea>
-                    <h2>Select language 👇</h2>
-                    <div class="radio-container">
-                        <div class="radio-row">
-                            <input type="radio" id="greek" value="greek" name="language" checked/>
-                            <label for="greek">Greek</label>
-                            <img class="language-img" src="assets/gr-flag.png" />
-                        </div>
-                        <div class="radio-row">
-                            <input type="radio" id="spanish" value="spanish" name="language"/>
-                            <label for="spanish">Spanish</label>
-                            <img class="language-img" src="assets/arg-flag.png" />
-                        </div>
-                    </div>                  
-                    <button class="translate-btn" id="translate-btn">Translate</button>
+                    <textarea id="user-textarea" placeholder="e.g., Early Christian Church"></textarea>
+                    <div class="language-selection-container" id="language-selection-container">
+
+                        <h2 id="language-label">Select language 👇</h2>
+                        <div class="radio-container" id="radio-container">
+                            <div class="radio-row" id="radio-row">
+                                <input type="radio" id="greek" value="greek" name="language" checked/>
+                                <label for="greek">Greek</label>
+                                <img class="language-img" src="assets/gr-flag.png" />
+                            </div>
+                            <div class="radio-row" id="radio-row">
+                                <input type="radio" id="spanish" value="spanish" name="language"/>
+                                <label for="spanish">Spanish</label>
+                                <img class="language-img" src="assets/arg-flag.png" />
+                            </div>
+                        </div>                  
+                        <button class="translate-btn" id="translate-btn">
+                            <span class="button-text" id="button-text">Translate</span>
+                            <span class="button-spinner"></span>
+                        </button>
+
+                    </div>
                 </form>
             </div>
         </main>

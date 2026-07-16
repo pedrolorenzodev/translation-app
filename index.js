@@ -1,20 +1,34 @@
 const translationForm = document.getElementById('translation-form')
-const userInput = document.getElementById('user-input')
-// const translatedText = document.getElementById('translated-text') /// TODO:
+const userTextarea = document.getElementById('user-textarea')
+const languageSelectionContainer = document.getElementById('language-selection-container')
+const languageLabel = document.getElementById('language-label')
+const radioContainer = document.getElementById('radio-container')
+const translateBtn = document.getElementById('translate-btn')
+const buttonText = document.getElementById('button-text')
 
 function start() {
   translationForm.addEventListener('submit', handleTranslationRequest)
 }
 
+// TODO: 
 async function handleTranslationRequest(e){
   e.preventDefault()
-  ////////// TODO
-  const userPrompt = userInput.value
-  const targetLanguage = document.querySelector('input[name="language"]:checked').value
-  if (!userPrompt) return;
-  
-  try {
+  const userPrompt = userTextarea.value
+  const targetLanguage = document.querySelector('input[name="language"]:checked')?.value
+
+  console.log("userPrompt:", userPrompt)
+  console.log("targetLanguage:", targetLanguage)
+  if (!userPrompt || !targetLanguage) return
+
+  if (buttonText.textContent !== 'Translate') {
+    console.log('START OVER')
+    startOver()
     
+    return 
+  }
+
+  setLoading(true)
+  try {
     const response = await fetch('/api/translation', {
       method: 'POST',
       headers: {
@@ -24,21 +38,33 @@ async function handleTranslationRequest(e){
     })
     
     const data = await response.json()
-    console.log("FULL SERVER RESPONSE:", data)   // ← your logs, in the browser console
+    const translation = data.translation
 
-    if (!response.ok) {
-      console.error("SERVER ERROR:", data.error)
-      translatedText.textContent = "Error: " + data.error
-      return
-    }
-
-    console.log("DEBUG:", data.debug)
-    // const translation = data.translation
+    languageLabel.textContent = `Translation in ${targetLanguage.toUpperCase()}:`
+    document.querySelectorAll('.radio-row').forEach(row => row.classList.add('hide'))
+    buttonText.textContent = 'Start Over'
     
-    // translatedText.textContent = translation /// TODO:
+    if (!radioContainer.querySelector('#translation-textarea')) {
+      radioContainer.innerHTML += `<textarea id="translation-textarea">${translation}</textarea>`
+    }
   } catch(err){
     console.error(err)
+  } finally {
+    setLoading(false)
   }
+}
+
+function setLoading(isLoading) {
+  translateBtn.disabled = isLoading
+  translateBtn.classList.toggle('is-loading', isLoading)
+}
+
+function startOver() {
+  languageLabel.textContent = 'Select language 👇'
+  document.querySelectorAll('.radio-row').forEach(row => row.classList.remove('hide'))
+  radioContainer.querySelector('#translation-textarea').remove()
+  buttonText.textContent = 'Translate'
+
 }
 
 start()

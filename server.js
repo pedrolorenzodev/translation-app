@@ -35,7 +35,6 @@ Rules:
 `
 }
 
-// '/api/translation' exist?
 app.post('/api/translation', async (req, res) => {
   try {
     const {userPrompt, targetLanguage} = req.body
@@ -96,8 +95,6 @@ app.post('/api/translation', async (req, res) => {
   }
 })
 
-
-// .env.PORT exist?
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`)

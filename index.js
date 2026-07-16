@@ -10,7 +10,6 @@ function start() {
   translationForm.addEventListener('submit', handleTranslationRequest)
 }
 
-// TODO: 
 async function handleTranslationRequest(e){
   e.preventDefault()
   const userPrompt = userTextarea.value
